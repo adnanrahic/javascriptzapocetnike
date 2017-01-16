@@ -1,0 +1,1 @@
+route('/page3', 'template3', pageThreeController);

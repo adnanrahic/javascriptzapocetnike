@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 3 - Functions</title>
+    <script>
+        
+        // Defining a function
+        var square = function(x) {
+            return x * x;
+        };
+        console.log(square(12));
+        // → 144
+
+
+        var makeNoise = function() {
+            console.log("Pling!");
+        };
+        makeNoise();
+        // → Pling!
+
+        var power = function(base, exponent) {
+            var result = 1;
+            for (var count = 0; count < exponent; count++)
+                result *= base;
+            return result;
+        };
+        console.log(power(2, 10));
+        // → 1024
+
+
+
+
+
+
+        // Parameters and scope
+        var x = "outside";
+        var f1 = function() {
+            var x = "inside f1";
+        };
+        f1();
+        console.log(x);
+        // → outside
+        var f2 = function() {
+            x = "inside f2";
+        };
+        f2();
+        console.log(x);
+        // → inside f2
+
+
+        
+
+
+        // Nested scope
+        var landscape = function() {
+            var result = "";
+            var flat = function(size) {
+                for (var count = 0; count < size; count++)
+                result += "_";
+            };
+            var mountain = function(size) {
+                result += "/";
+                for (var count = 0; count < size; count++)
+                result += "'";
+                result += "\\";
+            };
+
+            flat(3);
+            mountain(4);
+            flat(6);
+            mountain(1);
+            flat(1);
+
+            return result;
+        };
+        console.log(landscape());
+        // → ___/''''\______/'\_
+
+
+
+
+
+        // Functions as values
+        // assign a new value to a function expression
+        var launchMissiles = function(value) {
+            missileSystem.launch("now");
+        };
+        if (safeMode)
+            launchMissiles = function(value) {/* do nothing */};
+
+
+        
+
+
+        // Declaration notation
+        function square(x) {
+           return x * x;
+        }
+
+        console.log("The future says:", future());
+        function future() {
+            return "We STILL have no flying cars.";
+        }
+
+        function example() {
+            function a() {} // Okay
+            if (something) {
+                function b() {} // Danger!
+            }
+        }
+
+
+
+        // The call stack
+        function greet(who) {
+            console.log("Hello " + who);
+        }
+        greet("Harry");
+        console.log("Bye");
+
+        function chicken() {
+            return egg();
+        }
+        function egg() {
+            return chicken();
+        }
+        console.log(chicken() + " came first.");
+
+
+
+
+        // Optional arguments
+        function power(base, exponent) {
+        if (exponent == undefined)
+            exponent = 2;
+        var result = 1;
+        for (var count = 0; count < exponent; count++)
+            result *= base;
+        return result;
+        }
+
+        console.log(power(4));
+        // → 16
+        console.log(power(4, 3));
+        // → 64
+
+
+
+        // Closure
+        function wrapValue(n) {
+            var localVariable = n;
+            return function() { return localVariable; };
+        }
+        var wrap1 = wrapValue(1);
+        var wrap2 = wrapValue(2);
+        console.log(wrap1());  // → 1
+        console.log(wrap2());  // → 2
+
+        function multiplier(factor) {
+            return function(number) {
+                return number * factor;
+            };
+        }
+        var twice = multiplier(2);
+        console.log(twice(5));
+        // → 10
+
+
+
+
+        // Recursion
+        function power(base, exponent) {
+            if (exponent == 0)
+                return 1;
+            else
+                return base * power(base, exponent - 1);
+        }
+        console.log(power(2, 3));
+        // → 8
+
+
+
+        // Functions and side effects
+        var someValue = 10;
+        function setSomeValue() {
+            someValue = 5;
+        }
+        function getSomeValue() {
+            return someValue;
+        }
+
+
+        // Summary
+        // Create a function value f
+        var f = function(a) {
+            console.log(a + 2);
+        };
+
+        // Declare g to be a function
+        function g(a, b) {
+            return a * b * 3.5;
+        }
+
+
+
+        // Exersizes
+
+        /* Cows and chickens
+        *  We want to write a program that prints two numbers, 
+        *  the numbers of cows and chickens on a farm, with the 
+        *  words Cows and Chickens after them, and zeros padded 
+        *  before both numbers so that they are always three 
+        *  digits long.
+        *
+        *  007 Cows
+        *  011 Chickens
+        */
+
+        function printFarmInventory(cows, chickens) {
+            /*
+                your code here...
+            */
+
+
+            // var cowString = String(cows);
+            // while (cowString.length < 3)
+            //     cowString = "0" + cowString;
+            // console.log(cowString + " Cows");
+            // var chickenString = String(chickens);
+            // while (chickenString.length < 3)
+            //     chickenString = "0" + chickenString;
+            // console.log(chickenString + " Chickens");
+        }
+        printFarmInventory(7, 11);
+
+
+
+
+        /* Minimum
+        *  The previous chapter introduced the standard function 
+        *  Math.min that returns its smallest argument. We can do
+        *  that ourselves now. Write a function min that takes two 
+        *  arguments and returns their minimum.
+        */
+
+        // Your code here.
+
+        console.log(min(0, 10));
+        // → 0
+        console.log(min(0, -10));
+        // → -10
+        
+
+
+        
+
+        /* Recursion
+        *  We’ve seen that % (the remainder operator) can be used to 
+        *  test whether a number is even or odd by using % 2 to check 
+        *  whether it’s divisible by two. Here’s another way to define 
+        *  whether a positive whole number is even or odd:
+        *
+        *  Zero is even.
+        *  One is odd.
+        *
+        *  For any other number N, its evenness is the same as N - 2.
+        *
+        *  Define a recursive function isEven corresponding to this description. 
+        *  The function should accept a number parameter and return a Boolean.
+        *
+        *  Test it on 50 and 75. See how it behaves on -1. Why? Can you think of a way to fix this? 
+        */
+
+        // Your code here.
+
+        console.log(isEven(50));
+        // → true
+        console.log(isEven(75));
+        // → false
+        console.log(isEven(-1));
+        // → ??
+        
+
+        
+
+
+
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>

@@ -1,0 +1,1 @@
+route('/page1', 'template1', pageOneController);

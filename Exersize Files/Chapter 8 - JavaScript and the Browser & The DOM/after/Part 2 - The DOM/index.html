@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My home page</title>
+  </head>
+  <body>
+    <h1 class="main-heading">My home page</h1>
+    <p>Hello, I am Marijn and this is my home page.</p>
+    <p>I also wrote a book! Read it <a href="http://eloquentjavascript.net">here</a>.</p>
+
+
+
+    <!--<p>My ostrich Gertrude:</p>
+    <p><img id="gertrude" src="img/ostrich.png"></p>-->
+
+    
+    <div id="paragraph-wrapper">
+        <p>One</p>
+        <p>Two</p>
+        <p>Three</p>
+    </div>
+
+
+
+    <!-- attributes -->
+    <p data-classified="secret">The launch code is 00000000.</p>
+    <p data-classified="unclassified">I have two feet.</p>
+
+
+
+
+    <!-- layout -->
+    <p style="border: 10px solid red; height: 30px; line-height: 30px;">
+      I'm boxed in
+    </p>
+
+
+    <!-- styling -->
+    <p><a href=".">Normal link</a></p>
+    <p><a href="." style="color: green">Green link</a></p>
+
+    This text is displayed <strong>inline</strong>,
+    <strong style="display: block">as a block</strong>, and
+    <strong style="display: none">not at all</strong>.
+
+
+    <p id="para" style="color: purple">
+      Pretty text
+    </p>
+
+    <script>
+      var para = document.getElementById("para");
+      console.log(para.style.color);
+      para.style.color = "magenta";
+    </script>
+
+
+    <!-- CSS -->
+    <style>
+      strong {
+        font-style: italic;
+        color: gray;
+      }
+    </style>
+    <p>Now <strong>strong text</strong> is italic and gray.</p>
+
+    <style>
+      .subtle {
+        color: gray;
+        font-size: 80%;
+      }
+      #header {
+        background: blue;
+        color: white;
+      }
+      /* p elements, with classes a and b, and id main */
+      p.a.b#main {
+        margin-bottom: 20px;
+      }
+    </style>
+
+
+    <!-- QUERY SELECTOR ALL -->
+    <p>And if you go chasing
+      <span class="animal">rabbits</span></p>
+    <p>And you know you're going to fall</p>
+    <p>Tell 'em a <span class="character">hookah smoking
+      <span class="animal">caterpillar</span></span></p>
+    <p>Has given you the call</p>
+
+    <script>
+      function count(selector) {
+        return document.querySelectorAll(selector).length;
+      }
+      console.log(count("p"));           // All <p> elements
+      // → 4
+      console.log(count(".animal"));     // Class animal
+      // → 2
+      console.log(count("p .animal"));   // Animal inside of <p>
+      // → 2
+      console.log(count("p > .animal")); // Direct child of <p>
+      // → 1
+    </script>
+
+    
+
+    <!-- Init our script -->
+    <script src="script.js"></script>      
+  </body>
+</html>

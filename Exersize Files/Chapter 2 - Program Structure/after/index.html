@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 2 - Program Structure</title>
+    <script>
+
+        // Expressions and statements
+        22
+        "psychoanalysis"
+        (2 * 4)
+
+
+        // Variables
+        var caught = 5 * 5;
+        var ten = 10;
+        console.log(ten * ten);
+        // → 100
+
+        var mood = "light";
+        console.log(mood);
+        // → light
+        mood = "dark";
+        console.log(mood);
+        // → dark
+
+        var luigisDebt = 140;
+        luigisDebt = luigisDebt - 35;
+        console.log(luigisDebt);
+        // → 105
+
+        var one = 1, two = 2;
+        console.log(one + two);
+        // → 3
+
+
+
+
+        // Keywords and reserved words
+        
+        /*break case catch class const continue debugger
+        default delete do else enum export extends false
+        finally for function if implements import in
+        instanceof interface let new null package private
+        protected public return static super switch this
+        throw true try typeof var void while with yield*/
+
+
+
+
+
+        // Functions
+        alert("Good morning!");
+        confirm("Shall we, then?");
+        prompt("Tell me everything you know.", "...");
+
+        var x = 30;
+        console.log("the value of x is", x);
+        // → the value of x is 30
+
+        console.log(Math.max(2, 4));
+        // → 4
+
+        console.log(Math.min(2, 4) + 100);
+        // → 102
+
+
+
+
+
+        // Control flow
+        var theNumber = Number(prompt("Pick a number", ""));
+        alert("Your number is the square root of " + theNumber * theNumber);
+
+
+
+
+        // Conditional execution
+        var theNumber = Number(prompt("Pick a number", ""));
+        if (!isNaN(theNumber))
+        alert("Your number is the square root of " + 
+            theNumber * theNumber);
+
+        
+
+
+        var theNumber = Number(prompt("Pick a number", ""));
+        if (!isNaN(theNumber))
+            alert("Your number is the square root of " + theNumber * theNumber);
+        else
+            alert("Hey. Why didn't you give me a number?");
+
+
+        var num = Number(prompt("Pick a number", "0"));
+        if (num < 10)
+            alert("Small");
+        else if (num < 100)
+            alert("Medium");
+        else
+            alert("Large");
+
+
+        
+
+        // Loops
+        var number = 0;
+        while (number <= 12) {
+            console.log(number);
+            number = number + 2;
+        }
+
+        var result = 1;
+        var counter = 0;
+        while (counter < 10) {
+            result = result * 2;
+            counter = counter + 1;
+        }
+        console.log(result);
+        // → 1024
+
+        do {
+            var yourName = prompt("Who are you?");
+        } while (!yourName);
+        console.log(yourName);
+
+
+        for (var number = 0; number <= 12; number = number + 2)
+            console.log(number);
+
+
+        var result = 1;
+        for (var counter = 0; counter < 10; counter = counter + 1)
+            result = result * 2;
+        console.log(result);
+        // → 1024
+
+
+
+
+
+        // Breaking Out of a Loop
+        for (var current = 20; ; current++) {
+            if (current % 7 == 0)
+                break;
+        }
+        console.log(current);
+        // → 21
+
+
+
+
+
+
+        // Updating variables succinctly
+        var result = 1;
+        for (var counter = 0; counter < 10; counter++)
+            result = result * 2;
+        console.log(result);
+        // → 1024
+
+
+
+
+
+        // Switch
+        switch (prompt("What is the weather like?")) {
+            case "rainy":
+                console.log("Remember to bring an umbrella.");
+                break;
+            case "sunny":
+                console.log("Dress lightly.");
+            case "cloudy":
+                console.log("Go outside.");
+                break;
+            default:
+                console.log("Unknown weather type!");
+                break;
+        }
+
+        if (variable == "value1") action1();
+        else if (variable == "value2") action2();
+        else if (variable == "value3") action3();
+        else defaultAction();
+
+
+
+
+
+
+        // Comments
+
+        var accountBalance = calculateBalance(account);
+        // It's a green hollow where a river sings
+        accountBalance.adjust();
+        // Madly catching white tatters in the grass.
+        var report = new Report();
+        // Where the sun on the proud mountain rings:
+        addToReport(accountBalance, report);
+        // It's a little valley, foaming like light in a glass.
+
+        /*
+        I first found this number scrawled on the back of one of
+        my notebooks a few years ago. Since then, it has often
+        dropped by, showing up in phone numbers and the serial
+        numbers of products that I've bought. It obviously likes
+        me, so I've decided to keep it.
+        */
+
+
+
+
+
+
+
+        // Exersizes
+
+        /* Looping a triangle
+
+        Write a loop that makes seven calls to console.log to output the following triangle:
+
+        #
+        ##
+        ###
+        ####
+        #####
+        ######
+        #######
+        It may be useful to know that you can find the length of a string by writing .length after it. 
+
+        */
+
+        var abc = "abc";
+        console.log(abc.length);
+        // → 3
+
+        // Your code here.
+
+
+
+        /* FizzBuzz
+
+        Write a program that uses console.log to print all the numbers
+        from 1 to 100, with two exceptions. For numbers divisible by 3, 
+        print "Fizz" instead of the number, and for numbers divisible 
+        by 5 (and not 3), print "Buzz" instead.
+
+        When you have that working, modify your program to print "FizzBuzz", 
+        for numbers that are divisible by both 3 and 5 (and still print 
+        "Fizz" or "Buzz" for numbers divisible by only one of those).
+
+        (This is actually an interview question that has been claimed to 
+        weed out a significant percentage of programmer candidates. So if 
+        you solved it, you’re now allowed to feel good about yourself.)
+
+        */
+
+        // Your code here.
+
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>

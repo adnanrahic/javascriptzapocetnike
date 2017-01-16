@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 6 - Secret Life of Objects</title>
+    <script>
+    
+        // Constructor
+        function Rabbit(name) {
+            this.name = name;
+        }
+        // Prototype
+        Rabbit.prototype.speak = function(x) {
+            console.log(this.name + " said: " + x);
+        }
+        delete Rabbit.prototype.speak;
+        Object.defineProperty(Rabbit.prototype, "speak", {enumerable: false, value: function(x) {
+            console.log(this.name + " said: " + x);
+        }});
+        var someRabbit = new Rabbit("Meho");
+        console.log("toString" in someRabbit);
+        someRabbit.speak("yo, yo, yo!");
+
+        for(var prop in someRabbit) {
+            console.log(typeof prop);
+        }
+        someRabbit.speak("NOTHING");
+
+        var obj = Object.create(null);
+        obj.one = 1;
+        obj.two = 2;
+        obj.three = 3;
+        for(var prop in obj) {
+            console.log(prop);
+        }
+        console.log("toString" in obj);
+
+        // prototype interference
+        var map = {};
+        function storePhi(event, phi) {
+        map[event] = phi;
+        }
+
+        storePhi("pizza", 0.069);
+        storePhi("touched tree", -0.081);
+
+        Object.prototype.nonsense = "hi";
+        for (var name in map)
+            console.log(name);
+
+        console.log("nonsense" in map);
+        console.log("toString" in map);
+
+        delete Object.prototype.nonsense;
+
+        console.log("_______________________\nGETTERS AND SETTERS");
+        // get set
+        var pile = {
+            elements: ["eggshell", "orange peel", "worm"],
+            get height() {
+                return this.elements.length;
+            },
+            set height(value) {
+                // console.log("Ignoring attempt to set height to", value);
+                this.value = value;
+            }
+        };
+
+        console.log(pile.height);
+        // → 3
+        pile.height = 100;
+        // → Ignoring attempt to set height to 100
+        console.log(pile);
+
+
+        console.log("_______________________\nENCAPSULATION");
+        function Dog() {
+            var name;
+            this.getName = function() {
+                return name;
+            };
+            this.setName = function(value) {
+                name = value;
+            };
+        }
+
+        var husky = new Dog();
+        husky.setName("Meho");
+
+        console.log(husky);
+        console.log(husky.getName());
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>

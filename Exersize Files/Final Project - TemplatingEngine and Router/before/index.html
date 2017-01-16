@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My home page</title>
+    <!-- templating engine init -->
+    <script src="tmpl.js"></script>
+    <!-- router init -->
+    <script src="rtr.js"></script>
+
+    <!-- templates -->
+    <script type="text/html" id="home">
+        <h1>Router FTW!</h1>
+        <h1> <% this.greeting %> </h1>
+    </script>
+    <script type="text/html" id="template1">
+        <h1>Page 1: <% this.greeting %></h1>
+        <p><% this.someText %></p>
+        <p><% this.moreText %></p>
+    </script>
+    <script type="text/html" id="template2">
+        <h1>Page 2: <% this.greeting %></h1>
+        <p><% this.someText %></p>
+        <p><% this.moreText.foo %></p>
+    </script>
+    <script type="text/html" id="template3">
+        <h1>Page 3: <% this.greeting %></h1>
+        <p> <% this.someText %> </p>
+        <p> <% this.moreText %> </p>
+    </script>
+  </head>
+  <body>
+    
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#/page1">Page 1</a></li>
+        <li><a href="#/page2">Page 2</a></li>
+        <li><a href="#/page3">Page 3</a></li>
+    </ul>
+
+    <div id="view"></div>
+
+
+
+    <!-- routes -->    
+   
+  </body>
+</html>

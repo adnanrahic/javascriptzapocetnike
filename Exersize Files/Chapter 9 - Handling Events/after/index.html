@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 9 - Handling Events</title>
+    <meta charset="utf-8">
+
+    <script>
+
+      
+
+    </script>
+  </head>
+  <body>
+
+      <!--Event Handlers-->
+      <h1>Event Handlers</h1>
+      <p>Click this document to activate the handler.</p>
+      <script>
+        addEventListener("click", function() {
+          console.log("You clicked!");
+        });
+      </script>
+
+      <hr>
+
+      <!--Events and DOM nodes-->
+      <h1>Events and DOM nodes</h1>
+      <button>Click me</button>
+      <p>No handler here.</p>
+      <script>
+        var button = document.querySelector("button");
+        button.addEventListener("click", function() {
+          console.log("Button clicked.");
+        });
+      </script>
+
+      <button>Act-once button</button>
+      <script>
+        var button = document.querySelector("button");
+        function once() {
+          console.log("Done.");
+          button.removeEventListener("click", once);
+        }
+        button.addEventListener("click", once);
+      </script>
+
+      <hr>
+
+      <!--Event objects-->
+      <h1>Event objects</h1>
+      <button>Click me any way you want</button>
+      <script>
+        var button = document.querySelector("button");
+        button.addEventListener("mousedown", function(event) {
+          if (event.which == 1)
+            console.log("Left button");
+          else if (event.which == 2)
+            console.log("Middle button");
+          else if (event.which == 3)
+            console.log("Right button");
+        });
+      </script>
+
+      <hr>
+
+      
+      <!--Propagation-->
+      <h1>Propagation</h1>
+      <p>A paragraph with a <button>button</button>.</p>
+      <script>
+        var para = document.querySelector("p");
+        var button = document.querySelector("button");
+        para.addEventListener("mousedown", function() {
+          console.log("Handler for paragraph.");
+        });
+        button.addEventListener("mousedown", function(event) {
+          console.log("Handler for button.");
+          if (event.which == 3)
+            event.stopPropagation();
+        });
+      </script>
+
+      <button>A</button>
+      <button>B</button>
+      <button>C</button>
+      <script>
+        document.body.addEventListener("click", function(event) {
+          if (event.target.nodeName == "BUTTON")
+            console.log("Clicked", event.target.textContent);
+        });
+      </script>
+
+
+      <hr>
+
+
+      <!--Default actions-->
+      <h1>Default actions</h1>
+      <a href="https://developer.mozilla.org/">MDN</a>
+      <script>
+        var link = document.querySelector("a");
+        link.addEventListener("click", function(event) {
+          console.log("Nope.");
+          event.preventDefault();
+        });
+      </script>
+
+      <hr>
+
+      <!--Key Events-->
+      <h1>Key Events</h1>
+      <p>This page turns violet when you hold the V key.</p>
+      <script>
+        addEventListener("keydown", function(event) {
+          if (event.keyCode == 86)
+            document.body.style.background = "violet";
+        });
+        addEventListener("keyup", function(event) {
+          if (event.keyCode == 86)
+            document.body.style.background = "";
+        });
+      </script>
+
+      <script>
+        console.log("Violet".charCodeAt(0));
+        // → 86
+        console.log("1".charCodeAt(0));
+        // → 49
+      </script>
+
+      <p>Press Ctrl-Space to continue.</p>
+      <script>
+        addEventListener("keydown", function(event) {
+          if (event.keyCode == 32 && event.ctrlKey)
+            console.log("Continuing!");
+        });
+      </script>
+
+      <p>Focus this page and type something.</p>
+      <script>
+        addEventListener("keypress", function(event) {
+          console.log(String.fromCharCode(event.charCode));
+        });
+      </script>
+
+
+
+      <hr>
+
+
+
+
+      <!--Mouse clicks-->
+      <h1>Mouse clicks</h1>
+      <style>
+        body {
+          height: 200px;
+          background: beige;
+        }
+        .dot {
+          height: 8px; width: 8px;
+          border-radius: 4px; /* rounds corners */
+          background: blue;
+          position: absolute;
+        }
+      </style>
+      <script>
+        addEventListener("click", function(event) {
+          var dot = document.createElement("div");
+          dot.className = "dot";
+          dot.style.left = (event.pageX - 4) + "px";
+          dot.style.top = (event.pageY - 4) + "px";
+          document.body.appendChild(dot);
+        });
+      </script>
+
+
+      <hr>
+
+
+      <!--Mouse motion-->
+      <h1>Mouse motion</h1>
+      <style>
+        p:hover { color: red }
+      </style>
+      <p>Hover over this <strong>paragraph</strong>.</p>
+
+
+      <hr>
+
+
+      <!--Scroll events-->
+      <h1>Scroll events</h1>
+      <style>
+        .progress {
+          border: 1px solid blue;
+          width: 100px;
+          position: fixed;
+          top: 10px; right: 10px;
+        }
+        .progress > div {
+          height: 12px;
+          background: blue;
+          width: 0%;
+        }
+        body {
+          height: 2000px;
+        }
+      </style>
+      <div class="progress"><div></div></div>
+      <p>Scroll me...</p>
+      <script>
+        var bar = document.querySelector(".progress div");
+        addEventListener("scroll", function() {
+          var max = document.body.scrollHeight - innerHeight;
+          var percent = (pageYOffset / max) * 100;
+          bar.style.width = percent + "%";
+        });
+      </script>
+
+
+      <hr>
+
+
+      <!--Focus events-->
+      <h1>Focus events</h1>
+      <p>Name: <input type="text" data-help="Your full name"></p>
+      <p>Age: <input type="text" data-help="Age in years"></p>
+      <p id="help"></p>
+
+      <script>
+        var help = document.querySelector("#help");
+        var fields = document.querySelectorAll("input");
+        for (var i = 0; i < fields.length; i++) {
+          fields[i].addEventListener("focus", function(event) {
+            var text = event.target.getAttribute("data-help");
+            help.textContent = text;
+          });
+          fields[i].addEventListener("blur", function(event) {
+            help.textContent = "";
+          });
+        }
+      </script>
+
+
+
+      <!--Setting timers-->
+      <h1>Setting timers</h1>
+      <script>
+        document.body.style.background = "blue";
+        setTimeout(function() {
+          document.body.style.background = "yellow";
+        }, 2000);
+
+
+
+        var bombTimer = setTimeout(function() {
+          console.log("BOOM!");
+        }, 500);
+
+        if (Math.random() < 0.5) { // 50% chance
+          console.log("Defused.");
+          clearTimeout(bombTimer);
+        }
+
+
+        var ticks = 0;
+        var clock = setInterval(function() {
+          console.log("tick", ticks++);
+          if (ticks == 10) {
+            clearInterval(clock);
+            console.log("stop.");
+          }
+        }, 200);
+      </script>
+
+      
+      <hr>
+
+
+      <!--Debouncing-->
+      <h1>Debouncing</h1>
+      <textarea>Type something here...</textarea>
+      <script>
+        var textarea = document.querySelector("textarea");
+        var timeout;
+        textarea.addEventListener("keydown", function() {
+          clearTimeout(timeout);
+          timeout = setTimeout(function() {
+            console.log("You stopped typing.");
+          }, 500);
+        });
+      </script>
+
+
+      <script>
+        function displayCoords(event) {
+          document.body.textContent =
+            "Mouse at " + event.pageX + ", " + event.pageY;
+        }
+
+        var scheduled = false, lastEvent;
+        addEventListener("mousemove", function(event) {
+          lastEvent = event;
+          if (!scheduled) {
+            scheduled = true;
+            setTimeout(function() {
+              scheduled = false;
+              displayCoords(lastEvent);
+            }, 250);
+          }
+        });
+      </script>
+
+
+
+
+      <!--EXERSIZES-->
+
+      <!--Censored Keyboard
+      Between 1928 and 2013, Turkish law forbade the use of the letters Q, W, and X in official documents. This was part of a wider initiative to stifle Kurdish culture—those letters occur in the language used by Kurdish people but not in Istanbul Turkish.
+
+      As an exercise in doing ridiculous things with technology, I’m asking you to program a text field (an <input type="text"> tag) that these letters cannot be typed into.
+
+      (Do not worry about copy and paste and other such loopholes.)-->
+
+      <input type="text">
+      <script>
+        var field = document.querySelector("input");
+        // Your code here.
+      </script>
+
+
+
+
+
+      <!--
+      Tabs
+
+      A tabbed interface is a common design pattern. It allows you to select an interface panel by choosing from a number of tabs “sticking out” above an element.
+
+      In this exercise you’ll implement a simple tabbed interface. Write a function, asTabs, that takes a DOM node and creates a tabbed interface showing the child elements of that node. It should insert a list of <button> elements at the top of the node, one for each child element, containing text retrieved from the data-tabname attribute of the child. All but one of the original children should be hidden (given a display style of none), and the currently visible node can be selected by clicking the buttons.
+
+      When it works, extend it to also style the currently active button differently. -->
+
+      <div id="wrapper">
+        <div data-tabname="one">Tab one</div>
+        <div data-tabname="two">Tab two</div>
+        <div data-tabname="three">Tab three</div>
+      </div>
+      <script>
+        function asTabs(node) {
+          // Your code here.
+        }
+        asTabs(document.querySelector("#wrapper"));
+      </script>
+
+
+
+
+
+
+
+
+
+
+
+      <!--SOLUTION-->
+      <!--<div id="wrapper">
+      <div data-tabname="one">Tab one</div>
+      <div data-tabname="two">Tab two</div>
+      <div data-tabname="three">Tab three</div>
+    </div>
+    <script>
+      function asTabs(node) {
+        var i = 1;
+        var ol = document.createElement("ol");
+        Array.prototype.forEach.call(node.children, function(child) {
+          if (i == 1) child.style.display = "block";
+          else child.style.display = "none";
+          
+          var li = document.createElement("li");
+          var btn = document.createElement("button");
+          
+          btn.innerText = child.getAttribute("data-tabname");
+          btn.addEventListener("click", function(event) {
+            var tabs = document.querySelectorAll("#wrapper div");
+            for (var i = 0; i < tabs.length; i++) {
+              var tab = tabs[i];
+              tab.style.display = "none";
+            }
+
+            var btns = document.querySelectorAll("#wrapper button");            
+            for (var i = 0; i < btns.length; i++) {
+              var btn = btns[i];
+              btn.style.backgroundColor = "white";
+            }
+
+            child.style.display = "block";
+            this.style.backgroundColor = "lightblue";
+          });
+
+          li.appendChild(btn);
+          ol.appendChild(li);
+          i++;
+        });
+        node.insertBefore(ol, node.children[0]);        
+      }
+      asTabs(document.querySelector("#wrapper"));
+    </script>-->
+
+
+
+
+      
+  </body>
+</html>
+
+
