@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 3 - Functions</title>
+    <script>
+      var iOvoJeNekaVrijednost = 1;
+      function hajmoOvoUmotati(n, p) {
+        var name = n;
+        var password = p;
+        var vratiSamoIme = function() {
+          return name;
+        }
+        return vratiSamoIme;
+      }
+
+      var wrap1 = hajmoOvoUmotati("Ime", "Prezime");
+      var wrap2 = hajmoOvoUmotati("Meho", "NekiPravocoolpassword123");
+
+      console.log(wrap1());  // → "Ime"
+      console.log(wrap2());  // → ""
+
+
+
+
+
+      function power(base, exponent) {
+        if (exponent == 0)
+          return 1;
+        else
+          return base * power(base, exponent - 1);
+      }
+      console.log(power(2, 3));
+
+
+      var x = 1;
+      function povecajXzaDva() {
+        x = x + 2;
+      }
+      povecajXzaDva();
+      function purePovecajZaDva(parametar) {
+        return parametar = parametar + 1;
+      }
+      var xJeSadTri = purePovecajZaDva(x);
+      console.log(xJeSadTri);
+
+      function cowsAndChickens(cows, chickens) {
+        var x = String(1);
+        if (cows < 100 && cows > 10) {
+          cows = "0" + cows + " " + "Cows";
+        } else if (cows < 10 && cows > 0) {
+          cows = "00" + cows + " " + "Cows";
+        } else if (cows >= 100) {
+          cows = "" + cows + " " + "Cows";
+        }
+
+        if (chickens < 100 && chickens > 10) {
+          chickens = "0"+chickens+" "+"Chickens";
+        } else if (chickens < 10 && chickens > 0) {
+          chickens = "00"+chickens+" "+"Chickens";
+        }
+
+        console.log(cows);
+        console.log(chickens);
+      }
+
+      function cowsAndChickens(cows, chickens) {
+        var krave = String(cows);
+        var pilad = String(chickens);
+        while (krave.length < 3) {
+          krave = "0" + krave;
+        }
+        while (pilad.length < 3) {
+          pilad = "0" + pilad;
+        }
+        console.log(krave + " Cows");
+        console.log(pilad + " Chickens");
+      }
+
+      cowsAndChickens(5, 1);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>
