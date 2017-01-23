@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 4 - Data Structures: Objects and Arrays</title>
+    <script>
+        
+        // Objects
+        // var hobotnica = { 
+        //   boja: "crvena", 
+        //   brojRuku: 7,
+        //   tezina: "puno"
+        // };
+
+        // hobotnica.boja = 52;
+        // hobotnica.visina = 232345;
+        // delete hobotnica.visina;
+
+        // console.log("meho" in hobotnica);
+        // console.log(hobotnica);
+
+
+        // Objects as maps
+        // var map = {};
+        // map["meho"] = "je cool!";
+        // map["suljo"] = "Je masina!"
+        // function storePhi(ime, opis) {
+        //     map[ime] = opis;
+        // }
+        // storePhi("suljo", "Sulja je prejak lik.");
+        // storePhi("mujo", "mujo je prejak lik.");
+        // storePhi("touched tree", -2);
+        // console.log(map);
+        // console.log(map["pizza"]);
+
+        // for (var event in map) {
+        //   console.log(event +": "+ map[event]);
+        // }
+        // → The correlation for 'pizza' is 0.069
+        // → The correlation for 'touched tree' is -0.081
+
+
+        // Further arrayology
+        // var todoList = [];
+        // function rememberTo(task) {
+        //     todoList.push(task);
+        // }
+        // function whatIsNext() {
+        //     var shifted = todoList.shift();
+        //     return shifted;
+        // }
+        // function urgentlyRememberTo(task) {
+        //     todoList.unshift(task);
+        // }
+        // rememberTo("Nesto vazno.");
+        // console.log(todoList);
+        // var vagonKojiSmoOdvojili = whatIsNext();
+        // console.log(vagonKojiSmoOdvojili);
+
+
+
+        // console.log([1, 2, 3, 2, 1].indexOf(16));
+        // // → -1
+        // console.log([1, 2, 3, 2, 1].lastIndexOf(2));
+        // // → 3
+
+        // var arrayOne = [1, 2, 3];
+        // var arrayTwo = [4, 5, 6];
+        // var arrayThree = arrayOne.concat(arrayTwo);
+        // console.log(arrayThree);
+
+
+
+        // console.log("coconuts".slice(4, 7)); // → nut
+        // console.log("coconut".indexOf("u")); // → 5
+        // var string = "    kjfkjf     ";
+
+        // var string = "abc"; 
+        // console.log(string.length);  // → 3
+        // console.log(string.charAt(0));  // → a
+        // console.log(string[1]);  // → b
+
+        // function argumentCounter() {
+        //   console.log(arguments.length);
+        //   for (var i = 0; i < arguments.length; i++) {
+        //     console.log(arguments[i]);
+        //   }
+        // }
+        // argumentCounter("Straw man",
+        //                  "Tautology", 
+        //                  "Ad hominem");
+        // // → 3
+
+
+        // var myVar = 10;
+        // console.log("myVar" in window);   // → true
+        // console.log(window.myVar);   // → 10
+        // console.log(window);
+
+
+        // window.someVar = 10;
+        // window["anotherVar"] = 10;
+
+
+        console.log(range(1, 10));
+        // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        function range(pocetak, kraj) {
+          var arr = [];
+          for (var i = pocetak; i <= kraj; i++) {
+            arr.push(i);
+          }
+          return arr;
+        }
+
+
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>

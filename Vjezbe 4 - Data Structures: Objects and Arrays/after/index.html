@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 4 - Data Structures: Objects and Arrays</title>
+    <script>
+        // Data sets
+        var listOfNumbers = [2, 3, 5, 7, 11];
+
+        console.log(listOfNumbers[1]);
+        // → 3
+        console.log(listOfNumbers[1 - 1]);
+        // → 2
+
+        console.log(listOfNumbers[0]);
+        // → 2
+
+
+
+
+        // Access properties
+        var value = {
+            name: "Foo",
+            "2": "Two",
+            "John Doe": "Hi my name is John."
+        };
+
+        console.log(value.name);
+        console.log(value["John Doe"]);
+
+
+
+
+
+        // Methods
+        var doh = "Doh";
+        console.log(typeof doh.toUpperCase);
+        // → function
+        console.log(doh.toUpperCase());
+        // → DOH
+
+        var mack = [];
+        mack.push("Mack");
+        mack.push("the", "Knife");
+        console.log(mack);
+        // → ["Mack", "the", "Knife"]
+        console.log(mack.join(" "));
+        // → Mack the Knife
+        console.log(mack.pop());
+        // → Knife
+        console.log(mack);
+        // → ["Mack", "the"]
+
+
+
+
+        // Objects
+        var day1 = {
+            squirrel: false,
+            events: ["work", "touched tree"]
+        };
+        console.log(day1.squirrel);
+        // → false
+        console.log(day1.wolf);
+        // → undefined
+        day1.wolf = false;
+        console.log(day1.wolf);
+        // → false
+
+        
+        
+        var anObject = {left: 1, right: 2};
+        console.log(anObject.left);
+        // → 1
+        delete anObject.left;
+        console.log(anObject.left);
+        // → undefined
+        console.log("left" in anObject);
+        // → false
+        console.log("right" in anObject);
+        // → true
+
+        var journal = [
+            {events: ["work","touched tree"],
+            squirrel: false},
+            {events: ["work","ice cream"],
+            squirrel: false},
+            {events: ["weekend","cycling"],
+            squirrel: true}
+        ];
+
+
+
+
+
+        // Mutability
+        var object1 = {value: 10};
+        var object2 = object1;
+        var object3 = {value: 10};
+        console.log(object1 == object2);
+        // → true
+        console.log(object1 == object3);
+        // → false
+
+        object1.value = 15;
+        console.log(object2.value);
+        // → 15
+        console.log(object3.value);
+        // → 10
+
+
+
+
+
+
+        // Objects as maps
+        var map = {};
+        function storePhi(event, phi) {
+            map[event] = phi;
+        }
+
+        storePhi("pizza", 0.069);
+        storePhi("touched tree", -0.081);
+        console.log("pizza" in map);
+        // → true
+        console.log(map["touched tree"]);
+        // → -0.081
+
+        for (var event in map)
+        console.log("The correlation for '" + event +
+                    "' is " + map[event]);
+        // → The correlation for 'pizza' is 0.069
+        // → The correlation for 'touched tree' is -0.081
+
+
+
+
+        
+        
+        // Further arrayology
+        var todoList = [];
+        function rememberTo(task) {
+            todoList.push(task);
+        }
+        function whatIsNext() {
+            return todoList.shift();
+        }
+        function urgentlyRememberTo(task) {
+            todoList.unshift(task);
+        }
+        
+        console.log([1, 2, 3, 2, 1].indexOf(2));
+        // → 1
+        console.log([1, 2, 3, 2, 1].lastIndexOf(2));
+        // → 3
+
+        function remove(array, index) {
+            return array.slice(0, index).concat(array.slice(index + 1));
+        }
+        console.log(remove(["a", "b", "c", "d", "e"], 2));
+        // → ["a", "b", "d", "e"]
+
+        var remaining = ["a", "b", "c", "d", "e"];
+        var removed = remaining.splice(2, 1);
+        console.log(remaining);
+
+
+
+
+
+
+        // Strings and properties
+        var myString = "Fido";
+        myString.myProperty = "value"; // does not work
+        console.log(myString.myProperty);
+        // → undefined
+
+        console.log("coconuts".slice(4, 7)); // → nut
+        console.log("coconut".indexOf("u")); // → 5
+        console.log("one two three".indexOf("ee"));  // → 11
+
+        console.log("  okay \n ".trim()); 
+        // → okay
+
+        var string = "abc";
+        console.log(string.length);  // → 3
+        console.log(string.charAt(0));  // → a
+        console.log(string[1]);  // → b
+
+
+
+
+        // Arguments object
+        function argumentCounter() {
+            console.log("You gave me", arguments.length, "arguments.");
+        }
+        argumentCounter("Straw man", "Tautology", "Ad hominem");
+        // → You gave me 3 arguments.
+
+        
+        function addEntry(squirrel) {
+            var entry = {events: [], squirrel: squirrel};
+            for (var i = 1; i < arguments.length; i++)
+                entry.events.push(arguments[i]);
+            journal.push(entry);
+        }
+        addEntry(true, "work", "touched tree", "pizza","running");
+
+
+
+        // Math object
+        console.log(Math.floor(Math.random() * 10));  // → random number between 1-10
+
+
+
+        // The Global Object
+        var myVar = 10;
+        console.log("myVar" in window);   // → true
+        console.log(window.myVar);   // → 10
+
+        window.anotherVar = 9;
+        console.log("anotherVar" in window);   // → true
+        console.log(window.anotherVar);   // → 10
+
+
+
+
+
+        // Exersizes
+
+        /*
+        * The sum of a range
+        *
+        * The introduction of this book alluded to the following as a
+        * nice way to compute the sum of a range of numbers:
+
+        * console.log(sum(range(1, 10)));
+        * Write a range function that takes two arguments, start and end,
+        * and returns an array containing all the numbers from start up to 
+        * (and including) end.
+
+        * Next, write a sum function that takes an array of numbers and returns 
+        * the sum of these numbers. Run the previous program and see whether it 
+        * does indeed return 55.
+        *
+        */
+
+
+        // Your code here.
+
+        console.log(range(1, 10));
+        // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        console.log(sum(range(1, 10)));
+        // → 55
+
+
+
+
+        /************************** 
+        Reversing an array
+        
+        Arrays have a method reverse, which changes the array by inverting 
+        the order in which its elements appear. For this exercise, write two 
+        functions, reverseArray and reverseArrayInPlace. The first, reverseArray, 
+        takes an array as argument and produces a new array that has the same
+        elements in the inverse order. The second, reverseArrayInPlace, does what
+        the reverse method does: it modifies the array given as argument in order
+        to reverse its elements. Neither may use the standard reverse method.
+
+        Thinking back to the notes about side effects and pure functions in the
+        previous chapter, which variant do you expect to be useful in more situations? 
+        Which one is more efficient?
+        *
+        ****************************/
+
+        // Your code here.
+
+        console.log(reverseArray(["A", "B", "C"]));
+        // → ["C", "B", "A"];
+        var arrayValue = [1, 2, 3, 4, 5];
+        reverseArrayInPlace(arrayValue);
+        console.log(arrayValue);
+        // → [5, 4, 3, 2, 1]
+
+
+
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>
