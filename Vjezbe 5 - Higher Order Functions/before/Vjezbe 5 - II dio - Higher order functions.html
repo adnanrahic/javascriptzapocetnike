@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 5 - Higher Order Functions</title>
+    <script>
+
+        // objects
+        var motorBike = {
+          "wheels": 2,
+          "engines": 1,
+          "seats": 2
+        };
+        motorBike.fuelType = "Petrol";
+        motorBike.speed = speed;
+        function speed() {
+          return 10;
+        }
+        console.log(motorBike);
+
+
+        // slice
+        var arr = [1, 2, 3, 4, 5];
+        var sliced = arr.slice(1,3);
+        console.log(sliced);
+
+        
+        // splice
+        function slasher(arr, howMany) {
+          var leftAfterSplice = arr;
+          var spliced = leftAfterSplice.splice(0, howMany);
+          return leftAfterSplice;
+        }
+        slasher([1, 2, 3], 2);
+
+
+        // map & sort
+        function largestOfFour(arr) {          
+          return arr.map(function(item) {
+            return item.sort(function(a, b) {
+              return a - b;
+            }).pop();
+          });
+        }
+        largestOfFour([[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]);
+
+
+        // factorialize
+        function factorialize(num) {
+          var sum = 1;
+          for (var i = num; i > 0; i--) {
+            sum *= i;
+          }
+          return sum;
+        }
+        factorialize(5);
+
+
+        // Chunkey Monkey
+        function chunkArrayInGroups(arr, size) {
+          var ret = [];  
+          for (var i = 0; i < arr.length; i += size) {
+            ret.push(arr.slice(i,i+size));
+          }
+          return ret;
+        }
+        chunkArrayInGroups(["a", "b", "c", "d"], 2);       
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>
