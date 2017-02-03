@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 5 - Higher Order Functions</title>
+  </head>
+  <body>
+  
+
+
+
+    <script>
+
+
+
+    // 1. napraviti nizove gdje cemo cuvati nase biljeske
+    // elementi niza ce biti objekti
+    var notes = [];
+    var completedNotes = [];
+
+
+
+    // 2. funkcija za dodavanje novih biljeski
+    function addNote(note) {
+        notes.push(note);
+    }
+
+
+
+    // 3.funkcija za brisanje biljeske
+    function deleteNote(index) {
+        return notes.splice(index, 1).pop();
+    }
+
+
+    // 4. markirati kao gotovo
+    function markAsComplete(index) {
+        var completed = deleteNote(index);
+        completedNotes.push(completed);
+    }
+
+
+    // 5. sortirati po vaznosti
+    function sortByImportance() {
+        return notes.sort(function(a, b) {
+            return a.important - b.important;
+        });
+    }
+    // 5. sortirati po starosti
+    function sortByAge() {
+        return notes.sort(function(a, b) {
+            return a.index - b.index;
+        });
+    }
+
+
+    var biljeska = {
+        index: 0,
+        title: "Kupi mlijeko",
+        description: "Meggle buraz",
+        important: 3
+    };
+    var drugaBiljeska = {
+        index: 1,
+        title: "Kupi hljeb",
+        description: "Klas",
+        important: 1
+    };
+    var trecaBiljeska = {
+        index: 2,
+        title: "Kupi meso",
+        description: "Mujanic",
+        important: 2
+    };
+    
+    addNote(biljeska);
+    addNote(drugaBiljeska);
+    addNote(trecaBiljeska);
+
+    var notes = sortByImportance();
+
+    console.log(notes);
+
+
+
+
+
+
+
+
+    </script>
+  </body>
+</html>
