@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 9 - Handling Events</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+    <div id="table-one">
+        <table>
+            <tr>
+                <th>name</th>
+                <th>height</th>
+                <th>country</th>
+            </tr>
+            <tr>
+                <td>Kilimanjaro</td>
+                <td>5895</td>
+                <td>Tanzania</td>
+            </tr>
+        </table>
+    </div>
+
+    <hr>
+
+    <div id="table-two">
+
+    </div>
+
+    <hr>
+
+    <div id="table-three">
+
+    </div>
+
+    <hr>
+
+    <div id="table-four">
+
+    </div>
+
+    
+
+    <script>
+        /**
+         * Example 1 - building the structure of the table
+         */
+         
+        // get the table-two div that will contain the table
+        var tableTwo = document.getElementById('table-two');        
+
+        // create a table
+        var table = document.createElement('table');
+
+        // create a heading
+        var trHeading = document.createElement('tr');
+
+        // create the heading elements
+        var thName = document.createElement('th');
+        thName.innerText = 'name';
+        var thHeight = document.createElement('th');
+        thHeight.innerText = 'height';
+        var thCountry = document.createElement('th');
+        thCountry.innerText = 'country';
+        
+        // append the heading elements to the heading
+        trHeading.appendChild(thName);
+        trHeading.appendChild(thHeight);
+        trHeading.appendChild(thCountry);
+
+        // append the heading to the table
+        table.appendChild(trHeading);       
+
+        ///////
+
+        // create a body        
+        var trBody = document.createElement('tr');
+
+        // create the body elements
+        var tdName = document.createElement('td');
+        tdName.innerText = 'Kilimanjaro';
+        var tdHeight = document.createElement('td');
+        tdHeight.innerText = '5895';
+        var tdCountry = document.createElement('td');
+        tdCountry.innerText = 'Tanzania';
+
+        // append the body elements to the body
+        trBody.appendChild(tdName);
+        trBody.appendChild(tdHeight);
+        trBody.appendChild(tdCountry);
+
+        // append the body to the table
+        table.appendChild(trBody);
+
+        // append the table to the table-two div
+        tableTwo.appendChild(table);
+        
+        ///////////////////////////////////////////////////////////////////////////7
+
+        /**
+         * Example 2 - works for only one array object
+         */
+        function buildTable(arr) {
+            // get the table-two div that will contain the table
+            var tableThree = document.getElementById('table-three');        
+
+            // create a table
+            var table = document.createElement('table');
+
+            // create a heading
+            var trHeading = document.createElement('tr');
+
+            // create the heading elements
+            var objProps = Object.keys(arr[0]);
+            var thElements = objProps.map(function (prop) {
+                var th = document.createElement('th');
+                th.innerText = prop;
+                return th;
+            });
+
+            // append the heading elements to the heading
+            thElements.forEach(function (thElement) {
+                trHeading.appendChild(thElement);
+            });
+            
+            // append the heading to the table
+            table.appendChild(trHeading);       
+
+            ///////
+
+            // create a body        
+            var trBody = document.createElement('tr');
+
+            // create the body elements
+            var tdName = document.createElement('td');
+            tdName.innerText = arr[0].name;
+            var tdHeight = document.createElement('td');
+            tdHeight.innerText = arr[0].height;
+            var tdCountry = document.createElement('td');
+            tdCountry.innerText = arr[0].country;
+
+            // append the body elements to the body
+            trBody.appendChild(tdName);
+            trBody.appendChild(tdHeight);
+            trBody.appendChild(tdCountry);
+
+            // append the body to the table
+            table.appendChild(trBody);
+
+            // append the table to the table-three div
+            tableThree.appendChild(table);
+            
+        }
+
+        var arr = [
+            {
+                name: "Kilimanjaro",
+                height: "5895",
+                country: "Tanzania"
+            }
+        ];
+        buildTable(arr);
+
+
+
+        ///////////////////////////////////////////////////////////////////////////7
+
+        /**
+         * Example 4 - works for any number of array objects
+         */
+        function buildTable2(arr) {
+            // get the table-two div that will contain the table
+            var tableFour = document.getElementById('table-four');
+
+            // create a table
+            var table = document.createElement('table');
+
+            // create a heading
+            var trHeading = document.createElement('tr');
+
+            // create the heading elements
+            var objProps = Object.keys(arr[0]);
+            var thElements = objProps.map(function (prop) {
+                var th = document.createElement('th');
+                th.innerText = prop;
+                return th;
+            });
+            
+            // append the heading elements to the heading
+            thElements.forEach(function (thElement) {
+                trHeading.appendChild(thElement);
+            });
+
+            // append the heading to the table
+            table.appendChild(trHeading);
+
+            ///////
+
+            arr.forEach(function (item) {
+                // create a body        
+                var trBody = document.createElement('tr');
+
+                // create the body elements
+                var tdName = document.createElement('td');
+                tdName.innerText = item.name;
+                var tdHeight = document.createElement('td');
+                tdHeight.innerText = item.height;
+                var tdCountry = document.createElement('td');
+                tdCountry.innerText = item.country;
+
+                // append the body elements to the body
+                trBody.appendChild(tdName);
+                trBody.appendChild(tdHeight);
+                trBody.appendChild(tdCountry);
+
+                // append the body to the table
+                table.appendChild(trBody);
+            });
+
+            // append the table to the table-two div
+            tableFour.appendChild(table);
+
+        }
+
+        var arr2 = [
+            {
+                name: "Kilimanjaro",
+                height: "5895",
+                country: "Tanzania"
+            },
+            {
+                name: "Mt.Everest",
+                height: "8868",
+                country: "Tibet"
+            }
+        ];
+        buildTable2(arr2);
+
+    </script>
+
+
+
+
+
+    <!--<input type="text">
+    <script>
+        var field = document.querySelector("input");
+        field.addEventListener("keydown", function (event) {
+            var slovo = String.fromCharCode(event.keyCode);
+            if ( slovo === "W" || slovo === "Q" || slovo === "X" ) {
+                event.preventDefault();
+            }
+            console.log(slovo);
+        });
+    </script>-->
+
+  </body>
+</html>
+
+
