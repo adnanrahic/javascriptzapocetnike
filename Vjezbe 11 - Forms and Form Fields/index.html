@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 11 - Forms</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+      <!-- COMMENTS -->
+      <form name="form">
+        Comment: <input type="text" name="comment"> <br>
+        <button name="button" type="submit">Post</button>
+      </form>
+      <ul id="comment-list"></ul>
+
+      <script>
+        var commentList = document.getElementById('comment-list');
+        var form = document.forms['form'];
+        var button = form.elements.button;
+        var input = form.elements.comment;
+
+        // set the disabled state of the button to default to true on page load
+        button.disabled = true;
+
+        // set the focus to input field on page load
+        input.focus();
+
+        // add keyup event listener for the input
+        // check if the input value is 0, in which case the button is disabled
+        input.addEventListener("keyup", function(e) {
+          if (input.value.length !== 0) button.disabled = false; 
+          else if (input.value.length === 0) button.disabled = true;
+        });
+
+        // add click event listener on the button
+        button.addEventListener('click', function(e) {
+          // we need to prevent the default behavior of the submit button
+          e.preventDefault();
+
+          // error handling
+          // check if the input field is not empty
+          if (input.value.length === 0) return alert('Molim unesite vrijednost u comment polje!');
+
+          // create a new li element which will hold the value of the new comment
+          var newComment = document.createElement('li');
+          
+          // add the value of the input field to the innerText of the new li element
+          newComment.innerText = input.value;
+
+          // append the new li with the content of the comment to the list of comments
+          commentList.appendChild(newComment);
+          
+          // resetting the state of the form to the initial position
+          // set the current value of the comment input field to empty
+          input.value = '';
+          // disable the button when the comment is posted
+          button.disabled = true;
+          
+        });
+      </script>
+
+
+    
+
+
+
+
+      <br>
+      <hr>
+
+    <!-- DRUGI PRIMJER SA NOTES -->
+
+    <!-- NOTES -->
+    <ul id="notes"></ul>
+    <form name="noteForm">
+      <input name="newNote" id="newNote" type="text">
+      <textarea name="newNoteDesc" id="newNoteDesc" cols="30" rows="10"></textarea>
+      <button id="addNewNoteBtn">New Note</button>
+    </form>
+
+    <script src="notes.js"></script>
+  </body>
+</html>
+
+
