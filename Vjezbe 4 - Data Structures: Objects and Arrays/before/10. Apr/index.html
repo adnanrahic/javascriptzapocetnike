@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 4 - Data Structures: Objects and Arrays</title>
+    <script>
+        
+        // Objects
+        // var hobotnica = { 
+        //   boja: "crvena", 
+        //   brojRuku: 7,
+        //   tezina: "puno"
+        // };
+
+        // hobotnica.boja = 52;
+        // hobotnica.visina = 232345;
+        // delete hobotnica.visina;
+
+        // console.log("meho" in hobotnica);
+        // console.log(hobotnica);
+
+
+        // Objects as maps
+        // var map = {};
+        // map["meho"] = "je cool!";
+        // map["suljo"] = "Je masina!"
+        // function storePhi(ime, opis) {
+        //     map[ime] = opis;
+        // }
+        // storePhi("suljo", "Sulja je prejak lik.");
+        // storePhi("mujo", "mujo je prejak lik.");
+        // storePhi("touched tree", -2);
+        // console.log(map);
+        // console.log(map["pizza"]);
+
+        // for (var event in map) {
+        //   console.log(event +": "+ map[event]);
+        // }
+        // → The correlation for 'pizza' is 0.069
+        // → The correlation for 'touched tree' is -0.081
+
+
+        // Further arrayology
+        // var todoList = [];
+        // function rememberTo(task) {
+        //     todoList.push(task);
+        // }
+        // function whatIsNext() {
+        //     var shifted = todoList.shift();
+        //     return shifted;
+        // }
+        // function urgentlyRememberTo(task) {
+        //     todoList.unshift(task);
+        // }
+        // rememberTo("Nesto vazno.");
+        // console.log(todoList);
+        // var vagonKojiSmoOdvojili = whatIsNext();
+        // console.log(vagonKojiSmoOdvojili);
+
+
+
+        // console.log([1, 2, 3, 2, 1].indexOf(16));
+        // // → -1
+        // console.log([1, 2, 3, 2, 1].lastIndexOf(2));
+        // // → 3
+
+        // var arrayOne = [1, 2, 3];
+        // var arrayTwo = [4, 5, 6];
+        // var arrayThree = arrayOne.concat(arrayTwo);
+        // console.log(arrayThree);
+
+
+
+        // console.log("coconuts".slice(4, 7)); // → nut
+        // console.log("coconut".indexOf("u")); // → 5
+        // var string = "    kjfkjf     ";
+
+        // var string = "abc"; 
+        // console.log(string.length);  // → 3
+        // console.log(string.charAt(0));  // → a
+        // console.log(string[1]);  // → b
+
+        // function argumentCounter() {
+        //   console.log(arguments.length);
+        //   for (var i = 0; i < arguments.length; i++) {
+        //     console.log(arguments[i]);
+        //   }
+        // }
+        // argumentCounter("Straw man",
+        //                  "Tautology", 
+        //                  "Ad hominem");
+        // // → 3
+
+
+        // var myVar = 10;
+        // console.log("myVar" in window);   // → true
+        // console.log(window.myVar);   // → 10
+        // console.log(window);
+
+
+        // window.someVar = 10;
+        // window["anotherVar"] = 10;
+
+
+        // console.log(range(1, 10));
+        // → [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+        /*function range(pocetak, kraj) {
+          var arr = [];
+          for (var i = pocetak; i <= kraj; i++) {
+            arr.push(i);
+          }
+          return arr;
+        }*/
+
+
+
+        /*function remove(array, index) {
+          return array.slice(0, index).concat(array.slice(index + 1));
+        }
+        console.log(remove([0, 1, 2, 3], 1));
+
+        function spl(array, index) {
+          array.splice(index, 1);
+          return array;
+        }
+        console.log(spl([0, 1, 2, 3], 1));*/
+
+
+
+
+
+
+        /*var anObject = {
+          left: 1, 
+          right: 2
+        };
+        console.log(anObject.left);
+        // → 1
+        delete anObject.left;
+        console.log(anObject.left);
+        // → undefined
+        console.log("left" in anObject);
+        // → false
+        console.log("right" in anObject);
+        // → true*/
+
+
+        /*var journal = [
+          {
+            events: ["work","touched tree"],
+            squirrel: false
+          },
+          {
+            events: ["work","ice cream"],
+            squirrel: false
+          },
+          {
+            events: ["weekend","cycling"],
+            squirrel: true
+          }
+        ];
+
+        journal.meho = {name: "Meho"};
+        journal.suljo = [0, 1, 2, 3];
+
+
+        console.log(journal[0]);
+
+
+        var string = "Meho Puzic";
+        string = "Halid Beslic";*/
+
+
+
+        /*var map = {};
+        function storePhi(property, value) {
+          map[property] = value;
+        }
+        storePhi("Meho", 25);
+        storePhi("Suljo", 24);
+        storePhi("Halid", 234);
+        storePhi("123123", 676585);
+        storePhi("27836238746", 23455);
+        console.log(map["Meho"]);
+
+        for (var property in map) {
+          console.log("The correlation for '" + property +
+              "' is " + map[property]);
+        }*/
+
+
+
+
+        /*function argumentCounter() {
+          console.log("You gave me", arguments.length, "arguments.");
+          console.log(arguments[0]);
+        }
+        argumentCounter("Straw man", "Tautology", "Ad hominem");*/
+        // → You gave me 3 arguments.
+
+        /*var journal = [];
+
+        function addEntry(squirrel) {
+          var entry = {events: [], squirrel: squirrel};
+
+          for (var i = 1; i < arguments.length; i++) {
+            entry.events.push(arguments[i]);
+          }
+
+          journal.push(entry);
+        }
+        addEntry(true, "work", "touched tree", "pizza","running");
+
+        console.log(journal);*/
+
+
+
+
+        /*for (var i = 1; i < arguments.length; i++) {
+          entry.events.push(arguments[i]);
+        }*/
+
+        /*var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        var sum = 0;*/
+        /*for (var i = 0; i < arr.length; i++) {
+          sum = sum + arr[i];
+        }
+        console.log(sum);*/
+        // 55 valjda?
+
+
+        /*arr.forEach(function (element) {
+          sum = sum + element;
+        });
+        console.log(sum);*/
+
+
+        function reverseArray(arr) {
+          // 1.
+          // return arr.reverse();
+
+          // 2.
+          /*var newArr = [];
+          for (var i = arr.length-1; i >= 0; i--) {
+            newArr.push(arr[i]);
+          }
+          return newArr;*/
+
+          // 3.
+          var newArr = [];
+          var arrLength = arr.length;
+          for (var i = 0; i < arrLength; i++) {
+            newArr.push(arr.pop());
+          }
+          return newArr;
+        }
+        console.log(reverseArray(["A", "B", "C"]));
+
+    </script>
+  </head>
+  <body>
+  
+  </body>
+</html>
