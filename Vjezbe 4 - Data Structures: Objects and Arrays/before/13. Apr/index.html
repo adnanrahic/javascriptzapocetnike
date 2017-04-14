@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vježbe - Notes</title>
+  </head>
+  <body>
+  
+    <script>
+
+    // 1. napraviti nizove gdje cemo cuvati nase biljeske
+    // elementi niza ce biti objekti
+
+    // 2. funkcija za dodavanje novih biljeski
+
+    // 3. funkcija za brisanje biljeske
+
+    // 4. ubaciti biljesku na prvo mjesto
+
+    // 5. sortirati po vaznosti
+
+    // ovo je neki niz
+    var biljeske = [];
+
+    function dodajBiljesku(id, naslov, opis, vaznost) {
+      var biljeska = {
+        id: id,
+        naslov: naslov,
+        opis: opis,
+        vaznost: vaznost
+      };
+      biljeske.push(biljeska);
+    }
+
+    dodajBiljesku(1, "Idi u konzum", "Kupi hljeb i mlijeko.", 1);
+    dodajBiljesku(2, "Idi u bingo", "Kupi hljeb i mlijeko.", 2);
+    dodajBiljesku(3, "Idi u mercator", "Kupi hljeb i mlijeko.", 3);
+    dodajBiljesku(4, "Idi u amko", "Kupi hljeb i mlijeko.", 4);
+
+    console.log("prije brisanja: ");
+    console.log(biljeske);
+
+    function brisiBiljesku(id) {
+      for (var i = 0; i < biljeske.length; i++) {
+        if (biljeske[i].id == id) {
+          // ovu biljesku zelimo da izbrisemo
+          biljeske.splice(i, 1);
+        }
+      }
+    }
+
+    brisiBiljesku(2);
+
+    console.log("poslije brisanja: ");
+    console.log(biljeske);
+
+
+    function ubaciBiljeskuNaPrvoMjesto(id, naslov, opis, vaznost) {
+      var biljeska = {
+        id: id,
+        naslov: naslov,
+        opis: opis,
+        vaznost: vaznost
+      };
+      biljeske.unshift(biljeska);
+    }
+
+    ubaciBiljeskuNaPrvoMjesto(5, "Hitno idi na bus!", "Sad odmah buraz!", 5);
+
+    console.log("poslije dodavanja na prvo mjesto: ");
+    console.log(biljeske);
+
+
+    function sortirajPoVaznosti() {
+      return biljeske.sort(function(a, b) {
+        return a.vaznost < b.vaznost;
+      });
+    }
+    biljeske = sortirajPoVaznosti();
+
+    console.log("sortirane biljeske:");
+    console.log(biljeske);
+
+    
+    </script>
+
+  </body>
+</html>
