@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+  <head>
+    <title>My home page</title>
+  </head>
+  <body>
+    
+
+
+    <table>
+      <tr>
+        <th>name</th>
+        <th>height</th>
+        <th>country</th>
+      </tr>
+      <tr>
+        <td>Kilimanjaro</td>
+        <td>5895</td>
+        <td>Tanzania</td>
+      </tr>
+    </table>
+
+    <hr>
+
+
+    <button>
+      Add Table
+    </button>
+
+
+    <script>
+
+      function createTable() {
+
+        var table = document.createElement('table');
+
+        var tr1 = document.createElement('tr');
+        var tr2 = document.createElement('tr');
+
+        var th1 = document.createElement('th');
+        var th2 = document.createElement('th');
+        var th3 = document.createElement('th');
+
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+        var td3 = document.createElement('td');
+
+        document.body.appendChild(table);
+        table.appendChild(tr1);
+        table.appendChild(tr2);
+        tr1.appendChild(th1);
+        tr1.appendChild(th2);
+        tr1.appendChild(th3);
+        tr2.appendChild(td1);
+        tr2.appendChild(td2);
+        tr2.appendChild(td3);
+
+        th1.innerHTML = 'name';
+        th2.innerHTML = 'height';
+        th3.innerHTML = 'country';
+        
+        td1.innerHTML = 'Kilimanjaro';
+        td2.innerHTML = '5895';
+        td3.innerHTML = 'Tanzania';
+
+      }
+
+      createTable("meho", "suljo", "halid");
+      createTable("dskjfhdskf", "slkfsdjkf", "sjdfhksdhfhkd");
+      createTable("meho", "suljo", "halid");
+      createTable("meho", "suljo", "halid");
+      createTable("meho", "suljo", "halid");
+
+    </script>
+  </body>
+</html>
