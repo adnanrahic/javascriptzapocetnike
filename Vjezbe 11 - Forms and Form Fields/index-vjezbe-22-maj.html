@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chapter 11 - Forms</title>
+    <meta charset="utf-8">
+  </head>
+  <body>
+
+      <form>
+        Value: <input type="text" name="meho">
+        <button type="submit">Save</button>
+      </form>
+
+      <script>
+        var form = document.querySelector('form');
+        form.addEventListener('submit', function (e) {
+          var p = document.createElement('p');
+          p.innerHTML = form.elements.meho.value;
+          document.body.appendChild(p);
+
+          form.elements.meho.value = '';
+          e.preventDefault();
+        });
+      </script>
+
+      <!--<script>
+        var input = document.querySelector('input');
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function (e) {
+          var p = document.createElement('p');
+          p.innerText = input.value;
+          document.body.appendChild(p);
+
+          input.value = '';
+          e.preventDefault();
+        });
+      </script>-->
+
+
+
+  </body>
+</html>
+
+
