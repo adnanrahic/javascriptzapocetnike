@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Final Project - Notes App</title>
+  </head>
+  <body>
+
+    <form>
+      ID: <input name="id" type="number"> <br>
+      NASLOV: <input type="text" name="naslov"> <br>
+      OPIS: <textarea name="opis" id="" cols="30" rows="10"></textarea> <br>
+      VAZNOST: <input name="vaznost" type="number"> <br>
+      <button name="dodaj" type="submit">Add</button>
+    </form>
+
+    <div id="content"></div>
+
+    <script>
+
+
+    var content = document.querySelector('#content');
+    var form = document.querySelector('form');
+    form.addEventListener('submit', function (e) {
+      dodajBiljesku(
+        form.elements.id.value, 
+        form.elements.naslov.value, 
+        form.elements.opis.value, 
+        form.elements.vaznost.value
+      );
+
+      e.preventDefault();
+    });
+
+    var biljeske = [];
+
+    function prikazatiBiljeske() {
+      // IZBRISATI SVE IZ DOM-A
+      content.innerHTML = '';
+      // UBACIMO SVE U DOM
+      // KORACAJ KROZ PETLJU
+      biljeske.forEach(function (biljeska) {
+        // 1. CREATE
+        var b = document.createElement('p');
+        // 2. POPULATE
+        b.innerText = biljeska.naslov + ':\n ' + biljeska.opis;
+        var btn = document.createElement('button');
+        btn.innerHTML = 'remove';
+        btn.addEventListener('click', function () {
+          biljeske.forEach(function (el, i) {
+            if (el.id == biljeska.id) {
+              biljeske.splice(i, 1);
+              prikazatiBiljeske();              
+            }
+          });
+        });
+        // 3. APPEND
+        b.appendChild(btn);      
+        content.appendChild(b);
+      });
+    }
+
+    function prikazatiJednuBiljesku(biljeska) {
+      // 1. CREATE
+      var b = document.createElement('p');
+      // 2. POPULATE
+      b.innerText = biljeska.naslov + ':\n ' + biljeska.opis;
+      // 3. APPEND
+      content.appendChild(b);
+    }
+
+    function dodajBiljesku(id, naslov, opis, vaznost) {
+      var biljeska = {
+        id: id,
+        naslov: naslov,
+        opis: opis,
+        vaznost: vaznost
+      };
+      biljeske.push(biljeska);
+
+      // 1. CREATE
+      var b = document.createElement('p');
+      // 2. POPULATE
+      b.innerText = biljeska.naslov + ':\n ' + biljeska.opis;
+      var btn = document.createElement('button');
+      btn.innerHTML = 'remove';
+      btn.addEventListener('click', function () {
+        biljeske.forEach(function (el, i) {
+          if (el.id == biljeska.id) {
+            biljeske.splice(i, 1);
+            prikazatiBiljeske();
+          }
+        });
+      });
+      // 3. APPEND
+      b.appendChild(btn);
+      content.appendChild(b);
+    }
+
+    
+    
+    </script>
+
+  </body>
+</html>
