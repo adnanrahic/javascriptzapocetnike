@@ -1,0 +1,36 @@
+<!-- <div style="height: 5000px">
+  Meho je zakon.
+</div>
+<script>
+  addEventListener('scroll', function (event) {
+    console.log('okinuo, Bgm!');
+  });
+</script> -->
+
+<!-- <textarea>Type something here...</textarea>
+<script>
+  var textarea = document.querySelector("textarea");
+  var timeout;
+  textarea.addEventListener("keydown", function() {
+    clearTimeout(timeout);
+    timeout = setTimeout(function() {
+      console.log("You stopped typing.");
+    }, 500);
+  });
+</script> -->
+
+
+<body>
+  <input type="text" />
+</body>
+
+<script>
+  var field = document.querySelector("input")
+    .addEventListener("keypress", function(event) {
+        if(event.which == 120 || event.which == 088 || 
+          event.which == 121 || event.which == 089 || 
+          event.which == 113 || event.which == 081 ){
+          event.preventDefault();
+        }
+    });
+</script>
