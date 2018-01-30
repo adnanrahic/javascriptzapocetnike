@@ -1,0 +1,8 @@
+#naslov {
+  font-size: 64px;
+  color: red;
+}
+
+#naslov .prvi-naslov {
+  font-size: 12px;
+}

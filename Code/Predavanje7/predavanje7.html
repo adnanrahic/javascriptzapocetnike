@@ -2,9 +2,86 @@
   Meho je zakon.
 </div>
 <script>
-  addEventListener('scroll', function (event) {
+  function eventHandler(event) {
     console.log('okinuo, Bgm!');
+  }
+
+  eventHandler();
+
+  document.body.addEventListener('click', eventHandler);
+  document.body.addEventListener('click', eventHandler2);
+  document.body.removeEventListener('click', eventHandler3);
+</script> -->
+
+<!-- <button>Act-once button</button>
+<script>
+  var button = document.querySelector("button");
+  function once() {
+    console.log("Done.");
+    button.removeEventListener("click", once);
+  }
+  button.addEventListener("click", once);
+</script> -->
+
+
+<!-- <button>Click me any way you want</button>
+<script>
+var button = document.querySelector("button");
+button.addEventListener("mousedown", function(event) {
+    if (event.which == 1)
+      console.log("Left button");
+    else if (event.which == 2)
+      console.log("Middle button");
+    else if (event.which == 3)
+      console.log("Right button");
   });
+</script> -->
+
+
+<!-- <p>A paragraph with a <button>button</button>.</p>
+<script>
+  var para = document.querySelector("p");
+  var button = document.querySelector("button");
+  para.addEventListener("mousedown", function() {
+    console.log("Handler for paragraph.");
+  });
+  button.addEventListener("mousedown", function(event) {
+    console.log("Handler for button.");
+    if (event.which == 3)
+      event.stopPropagation();
+  });
+</script> -->
+
+
+<!-- <button>A</button>
+<button>B</button>
+<button>C</button>
+<script>
+  document.body.addEventListener("click", function (event) {
+    console.log("Clicked body.");
+
+    if (event.target.nodeName == "BUTTON") 
+      console.log("Clicked", event.target.textContent);
+  });
+</script> -->
+
+<!-- <p>Focus this page and type something.</p>
+<script>
+  addEventListener("keypress", function(event) {
+    console.log(String.fromCharCode(event.charCode));
+  });
+</script> -->
+
+<!-- <script>
+
+  var bombTimer = setTimeout(function () {
+    console.log("BOOM!");
+  }, 500);
+  if (Math.random() < 0.5) { // 50% chance
+    console.log("Defused.");
+    clearTimeout(bombTimer);
+  }
+
 </script> -->
 
 <!-- <textarea>Type something here...</textarea>
@@ -25,12 +102,29 @@
 </body>
 
 <script>
-  var field = document.querySelector("input")
-    .addEventListener("keypress", function(event) {
-        if(event.which == 120 || event.which == 088 || 
-          event.which == 121 || event.which == 089 || 
-          event.which == 113 || event.which == 081 ){
-          event.preventDefault();
-        }
-    });
+  var field = document.querySelector("input");
+  field.addEventListener("keypress", function (event) {
+    // q = 113, Q = 81
+    // w = 119, W = 87
+    // x = 120, X = 88
+
+    var slovo = String.fromCharCode(event.which);
+
+    if (
+      (slovo == 'q' || slovo == 'Q') ||
+      (slovo == 'w' || slovo == 'W') ||
+      (slovo == 'x' || slovo == 'X')
+    ) {
+      event.preventDefault();
+    }
+
+
+    // console.log();
+
+    // if (event.which == 120 || event.which == 088 ||
+    //   event.which == 121 || event.which == 089 ||
+    //   event.which == 113 || event.which == 081) {
+    //   event.preventDefault();
+    // }
+  });
 </script>
